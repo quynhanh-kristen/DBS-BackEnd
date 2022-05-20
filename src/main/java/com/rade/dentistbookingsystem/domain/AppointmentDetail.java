@@ -12,17 +12,27 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "Appointment_Detail")
-public class AppointmentDetail  implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false)
-    private int booking_id;
-    @Column(nullable = false)
-    private int service_id;
-    @Column(nullable = false)
-    private int doctor_id;
-    @Column(nullable = false)
-    private int discount_id;
+public class AppointmentDetail implements Serializable {
+    @EmbeddedId
+    AppointmentDetailKey id;
+
+    @ManyToOne
+    @MapsId("service_id")
+    @JoinColumn(name = "service_id")
+    Service service;
+
+    @ManyToOne
+    @MapsId("booking_id")
+    @JoinColumn(name = "booking_id")
+    Appointment appointment;
+
+    @ManyToOne()
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+
+    @ManyToOne()
+    @JoinColumn(name = "discount_id")
+    private Discount discount;
+
 
 }

@@ -12,10 +12,19 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "Discount_Service")
-@IdClass(DiscountServiceCompositeID.class)
-public class DiscountService  implements Serializable {
-    @Id
-    private int service_id;
-    @Id
-    private int discount_id;
+
+public class DiscountService implements Serializable {
+    @EmbeddedId
+    DiscountServiceKey id;
+
+    @ManyToOne
+    @MapsId("service_id")
+    @JoinColumn(name = "service_id")
+    Service service;
+
+    @ManyToOne
+    @MapsId("discount_id")
+    @JoinColumn(name = "discount_id")
+    Discount discount;
+
 }
