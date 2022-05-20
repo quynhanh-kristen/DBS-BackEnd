@@ -4,7 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -19,15 +31,13 @@ public class Appointment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = true)
     private Account account;
 
     @ManyToOne()
     @JoinColumn(name = "branch_id", nullable = false)
-    Branch branch;
-
+    private Branch branch;
 
     @Column(name = "guest_name", columnDefinition = "nvarchar(30)")
     private String guest_name;
@@ -45,6 +55,4 @@ public class Appointment implements Serializable {
 
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL)
     private Set<AppointmentDetail> appointmentDetailSet;
-
-
 }

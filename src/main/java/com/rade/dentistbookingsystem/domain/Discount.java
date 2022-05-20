@@ -4,7 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -18,9 +29,10 @@ public class Discount  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @Column(nullable = false)
-    private int account_id;
+    
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = true)
+    private Account account;
 
     @Column(nullable = false, length = 30, columnDefinition = "nvarchar(30)")
     private String name;
@@ -45,6 +57,5 @@ public class Discount  implements Serializable {
 
     // discount service
     @OneToMany(mappedBy = "discount")
-    Set<DiscountService> discountServiceSet;
-
+    private Set<DiscountService> discountServiceSet;
 }

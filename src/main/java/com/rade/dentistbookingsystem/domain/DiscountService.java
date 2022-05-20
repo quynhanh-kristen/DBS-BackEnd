@@ -4,7 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.EmbeddedId;
+import javax.persistence.MapsId;
 import java.io.Serializable;
 
 @AllArgsConstructor
@@ -15,16 +21,15 @@ import java.io.Serializable;
 
 public class DiscountService implements Serializable {
     @EmbeddedId
-    DiscountServiceKey id;
+    private DiscountServiceKey id;
 
     @ManyToOne
     @MapsId("service_id")
     @JoinColumn(name = "service_id")
-    Service service;
+    private Service service;
 
     @ManyToOne
     @MapsId("discount_id")
     @JoinColumn(name = "discount_id")
-    Discount discount;
-
+    private Discount discount;
 }
