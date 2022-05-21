@@ -69,6 +69,7 @@ CREATE TABLE Appointment (
   phone varchar(10),
   appointment_date date not null,
   appointment_time time not null,
+  status decimal(1) not null,
   PRIMARY KEY (id)
 );
 

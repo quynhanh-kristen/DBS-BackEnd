@@ -16,4 +16,5 @@ public class AppointmentDTO  implements Serializable {
     private String name;
     private String phone;
     private Date date;
+    private int status;
 }

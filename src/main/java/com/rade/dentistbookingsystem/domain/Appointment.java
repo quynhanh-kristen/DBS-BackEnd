@@ -44,7 +44,7 @@ public class Appointment implements Serializable {
 
     @Column(name = "phone", length = 10)
     private String phone;
-
+    
     @Column(name = "appointment_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -52,7 +52,9 @@ public class Appointment implements Serializable {
     @Column(name = "appointment_time", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date time;
-
+    
+    @Column(name = "status", nullable = false)
+    private int status;
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL)
     private Set<AppointmentDetail> appointmentDetailSet;
 }
