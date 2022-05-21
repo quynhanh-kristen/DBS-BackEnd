@@ -9,6 +9,12 @@ CREATE TABLE Province (
   name nvarchar(30) not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Province] ([name]) VALUES ('Province 1')
+INSERT INTO [dbo].[Province] ([name]) VALUES ('Province 2')
+
+
+
+
 
 CREATE TABLE District (
   id int,
@@ -16,6 +22,13 @@ CREATE TABLE District (
   name nvarchar(30) not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[District] ([name], [province_id]) VALUES ('District 1', 2)
+INSERT INTO [dbo].[District] ([name], [province_id]) VALUES ('District 2', 1)
+INSERT INTO [dbo].[District] ([name], [province_id]) VALUES ('District 3', 2)
+
+
+
+
 
 CREATE TABLE Role (
   id int,
@@ -60,6 +73,13 @@ CREATE TABLE Branch (
   status decimal(1) not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Branch] ([close_time], [name], [open_time], [status], [url], [district_id]) VALUES ('20:00:00', 'Branch 1', '7:00:00', 1, 'chinhanh1.png', 2)
+INSERT INTO [dbo].[Branch] ([close_time], [name], [open_time], [status], [url], [district_id]) VALUES ('21:00:00', 'Branch 2', '7:30:00', 1, 'chinhanh2.png', 1)
+INSERT INTO [dbo].[Branch] ([close_time], [name], [open_time], [status], [url], [district_id]) VALUES ('20:30:00', 'Branch 3', '6:00:00', 1, 'chinhanh3.png', 3)
+
+
+
+
 
 CREATE TABLE Appointment (
   id int,
@@ -88,6 +108,13 @@ CREATE TABLE Service_Type (
   description nvarchar(MAX),
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[ServiceType] (description, name) VALUES ('This is service type 1', 'Service type 1')
+INSERT INTO [dbo].[ServiceType] (description, name) VALUES ('This is service type 2', 'Service type 2')
+INSERT INTO [dbo].[ServiceType] (description, name) VALUES ('This is service type 3', 'Service type 3')
+
+
+
+
 
 CREATE TABLE Service (
   id int,
