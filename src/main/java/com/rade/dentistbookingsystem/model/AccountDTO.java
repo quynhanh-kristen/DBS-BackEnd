@@ -18,5 +18,4 @@ public class AccountDTO implements Serializable {
     private String phone;
     private String email;
     private int status;
-
 }

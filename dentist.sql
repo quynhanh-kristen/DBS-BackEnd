@@ -35,6 +35,12 @@ CREATE TABLE Role (
   name nvarchar(30) not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Role] ([name]) VALUES ('Patient')
+INSERT INTO [dbo].[Role] ([name]) VALUES ('Admin')
+
+
+
+
 
 CREATE TABLE Account (
   id int,
@@ -127,6 +133,10 @@ CREATE TABLE Service (
   max_price float not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price) VALUES (3, 'service 1', 'service1.png', 'This is service 1', 1, 10, 15)
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price) VALUES (3, 'service 2', 'service2.png', 'This is service 2', 1, 15, 20)
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price) VALUES (3, 'service 3', 'service3.png', 'This is service 3', 1, 10, 20)
+
 
 
 CREATE TABLE Discount (

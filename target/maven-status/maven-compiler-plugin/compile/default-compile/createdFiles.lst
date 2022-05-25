@@ -32,12 +32,12 @@ com\rade\dentistbookingsystem\services\impl\NotificationServiceImpl.class
 com\rade\dentistbookingsystem\services\impl\DoctorServiceImpl.class
 com\rade\dentistbookingsystem\domain\ServiceType.class
 com\rade\dentistbookingsystem\domain\AccountNotification.class
-com\rade\dentistbookingsystem\controller\AccountController.class
 com\rade\dentistbookingsystem\services\RoleService.class
 com\rade\dentistbookingsystem\domain\AppointmentDetailKey.class
 com\rade\dentistbookingsystem\model\ServiceTypeDTO.class
 com\rade\dentistbookingsystem\repository\DistrictRepo.class
 com\rade\dentistbookingsystem\services\impl\ProvinceServiceImpl.class
+com\rade\dentistbookingsystem\controller\ServiceTypeController.class
 com\rade\dentistbookingsystem\repository\ProvinceRepo.class
 com\rade\dentistbookingsystem\domain\Discount.class
 com\rade\dentistbookingsystem\services\impl\RoleServiceImpl.class
@@ -55,6 +55,7 @@ com\rade\dentistbookingsystem\services\ProvinceService.class
 com\rade\dentistbookingsystem\repository\DiscountServiceRepo.class
 com\rade\dentistbookingsystem\services\impl\AppointmentServiceImpl.class
 com\rade\dentistbookingsystem\services\FeedBackService.class
+com\rade\dentistbookingsystem\controller\BranchController.class
 com\rade\dentistbookingsystem\services\AccountService.class
 com\rade\dentistbookingsystem\repository\BranchRepo.class
 com\rade\dentistbookingsystem\services\AppointmentService.class
@@ -78,4 +79,5 @@ com\rade\dentistbookingsystem\services\AppointmentDetailService.class
 com\rade\dentistbookingsystem\services\impl\AccountServiceImpl.class
 com\rade\dentistbookingsystem\services\impl\ServiceTypeSvImpl.class
 com\rade\dentistbookingsystem\domain\Feedback.class
+com\rade\dentistbookingsystem\controller\HomeController.class
 com\rade\dentistbookingsystem\domain\AccountNotificationKey.class

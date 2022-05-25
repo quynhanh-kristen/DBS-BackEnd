@@ -31,7 +31,7 @@ public class Service implements Serializable {
     @JoinColumn(name = "service_type_id", nullable = false)
     private ServiceType serviceType;
 
-    @Column(name = "name", nullable = false, columnDefinition = "nvarchar(50)")
+    @Column(name = "name", nullable = false, columnDefinition = "nvarchar(50)", unique = true)
     private String name;
 
     @Column(name = "url", nullable = false, columnDefinition = "varchar(MAX)")

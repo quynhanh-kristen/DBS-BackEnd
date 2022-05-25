@@ -31,7 +31,7 @@ public class Branch implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, columnDefinition = "nvarchar(30)")
+    @Column(nullable = false, columnDefinition = "nvarchar(30)", unique = true)
     private String name;
 
     @ManyToOne
@@ -41,7 +41,6 @@ public class Branch implements Serializable {
     @Column(nullable = false, columnDefinition = "varchar(MAX)")
     private String url;
 
-
     @Column(name = "open_time", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date open_time;
@@ -49,7 +48,6 @@ public class Branch implements Serializable {
     @Column(name = "close_time", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date close_time;
-
 
     @Column(nullable = false)
     private int status;
@@ -59,4 +57,13 @@ public class Branch implements Serializable {
 
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL)
     private Set<Doctor> doctorSet;
+
+    public Branch(String name, District byId, Date open_time, Date close_time, int status, String url) {
+        this.name = name;
+        this.district = byId;
+        this.url = url;
+        this.open_time = open_time;
+        this.close_time = close_time;
+        this.status = status;
+    }
 }

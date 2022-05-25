@@ -34,7 +34,7 @@ public class Discount  implements Serializable {
     @JoinColumn(name = "account_id", nullable = true)
     private Account account;
 
-    @Column(nullable = false, length = 30, columnDefinition = "nvarchar(30)")
+    @Column(nullable = false, length = 30, columnDefinition = "nvarchar(30)", unique = true)
     private String name;
 
     @Column(nullable = false)

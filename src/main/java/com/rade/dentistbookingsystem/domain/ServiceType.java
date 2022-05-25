@@ -27,7 +27,7 @@ public class ServiceType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", nullable = false, columnDefinition = "nvarchar(30)")
+    @Column(name = "name", nullable = false, columnDefinition = "nvarchar(30)", unique = true)
     private String name;
 
     @Column(name = "description", columnDefinition = "nvarchar(MAX)")

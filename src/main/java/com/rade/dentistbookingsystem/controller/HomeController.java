@@ -28,6 +28,6 @@ public class HomeController {
     public String list(Model model){
         model.addAttribute("serviceTypeList", serviceTypeRepo.findAll());
         model.addAttribute("branchList", branchRepo.findAll());
-        return "home";
+        return "guest/home";
     }
 }
