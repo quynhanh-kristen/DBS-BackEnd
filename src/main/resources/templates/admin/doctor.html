@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor</title>
+</head>
+<body>
+<form enctype='multipart/form-data' action="/admin/branch/add" th:object="${DoctorDTO}" method="post">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input id="name" name="name" th:field="*{name}" th:value="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" id="name-error" th:errors="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>
+                <select>
+                    <option value="">Select Branch</option>
+                    <option th:each="branch : ${branchList}"
+                            th:value="${branch.id}"
+                            th:text="${branch.name}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td><textarea id="description" name="description" th:field="*{description}"></textarea></td>
+            <td th:if="${#fields.hasErrors('description')}" id="district_id-error" th:errors="*{description}"></td>
+        </tr>
+
+
+        <tr>
+            <td>Doctor image</td>
+            <td>: <input type="reset" value="Reset"><input type="file" name="photo"/></td>
+            <td th:if="${urlError != null}" id="urlError-error" th:value="${urlError}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

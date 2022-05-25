@@ -28,22 +28,28 @@ INSERT INTO [dbo].[District] ([name], [province_id]) VALUES ('District 3', 2)
 
 
 
-
-
-CREATE TABLE Role (
-  id int,
-  name nvarchar(30) not null,
-  PRIMARY KEY (id)
+CREATE TABLE Role
+(
+    id   int,
+    name nvarchar(30) not null,
+    PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Role] ([name])
+VALUES ('Patient')
+INSERT INTO [dbo].[Role] ([name])
+VALUES ('Admin')
 
-CREATE TABLE Account (
-  id int,
-  password varchar(30),
-  full_name nvarchar(30) not null,
-  date_of_birth date not null,
-  gender int not null,
-  district_id int not null FOREIGN KEY REFERENCES District(id),
-  phone varchar(10),
+
+
+CREATE TABLE Account
+(
+    id            int,
+    password      varchar(30),
+    full_name     nvarchar(30) not null,
+    date_of_birth date not null,
+    gender        int  not null,
+    district_id   int  not null FOREIGN KEY REFERENCES District(id),
+    phone         varchar(10),
   email varchar(50),
   status decimal(1) not null,
   role_id int not null FOREIGN KEY  REFERENCES  Role(id),
@@ -117,25 +123,34 @@ INSERT INTO [dbo].[ServiceType] (description, name) VALUES ('This is service typ
 
 
 CREATE TABLE Service (
-  id int,
-  service_type_id int not null FOREIGN KEY REFERENCES Service_Type(id),
-  name nvarchar(50) not null,
-  url varchar(MAX) not null,
+                         id              int,
+                         service_type_id int not null FOREIGN KEY REFERENCES Service_Type(id),
+                         name            nvarchar(50) not null,
+                         url             varchar(MAX
+) not null,
   description nvarchar(MAX),
   status decimal(1) not null,
   min_price float not null,
   max_price float not null,
   PRIMARY KEY (id)
 );
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price)
+VALUES (3, 'service 1', 'service1.png', 'This is service 1', 1, 10, 15)
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price)
+VALUES (3, 'service 2', 'service2.png', 'This is service 2', 1, 15, 20)
+INSERT INTO [dbo].[Service] (service_type_id, name, url, description, status, min_price, max_price)
+VALUES (3, 'service 3', 'service3.png', 'This is service 3', 1, 10, 20)
 
 
-CREATE TABLE Discount (
-  id int,
-  account_id int not null FOREIGN KEY REFERENCES Account(id),
-  name nvarchar(30) not null,
-  percentage float not null,
-  description nvarchar(MAX),
-  status decimal(1) not null,
+
+CREATE TABLE Discount
+(
+    id          int,
+    account_id  int        not null FOREIGN KEY REFERENCES Account(id),
+    name        nvarchar(30) not null,
+    percentage  float      not null,
+    description nvarchar( MAX),
+    status      decimal(1) not null,
   end_date date not null,
   start_date date not null,
   PRIMARY KEY (id)

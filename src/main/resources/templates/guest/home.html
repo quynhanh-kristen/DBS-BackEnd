@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <div>Service type list</div>
+    <th:block th:each="serviceType : ${serviceTypeList}">
+        <a th:href="'service-type/'+${serviceType.name}" th:text="${serviceType.name}"></a><br>
+    </th:block>
+    <div>Branch list</div>
+    <th:block th:each="branch : ${branchList}">
+        <!--            <div th:if="${condition}">
+                      <p>TRUE</p>
+                    </div>
+                    <div th:unless="${condition}">
+                      <p>FALSE</p>
+                    </div>-->
+        <a href="#" th:text="${branch.name}"></a><br>
+        <p th:text="${branch.url}"></p>
+        <p th:text="${branch.district.name +', '+ branch.district.province.name}"></p>
+    </th:block>
+</div>
+<form method="post" th:action="@{/login}" sec:authorize="!isAuthenticated()">
+    <div class="container">
+        <label><b>Phone Number</b></label>
+        <input id="phone" maxlength="12" name="uname" placeholder="Enter Username" required th:name="phone"
+               type="number">
+        <br>
+        <label><b>Password</b></label>
+        <input id="password" maxlength="30" name="psw" placeholder="Enter Password" required th:name="password"
+               type="password">
+        <br>
+        <input type="submit" value="Login">
+
+        <div th:if="${errorMessage}" class="alert alert-danger">
+            Invalid username and password.
+        </div>
+    </div>
+</form>
+<form method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>
