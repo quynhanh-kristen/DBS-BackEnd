@@ -41,13 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").anonymous()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/user/**").hasAnyAuthority("USER")
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginProcessingUrl("/login").usernameParameter("phone")
-                .passwordParameter("password").loginPage("/").permitAll().successForwardUrl("/login")
+                .passwordParameter("password").loginPage("/").permitAll().successForwardUrl("/login-authen")
                 .failureUrl("/login/login-error")
                 .and()
                 .logout().permitAll().logoutSuccessUrl("/")

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("login")
+@RequestMapping("login-authen")
 public class AccountLoginController {
     private final String HOME_PAGE = "guest/home";
     private final String USER_PAGE = "guest/home";
