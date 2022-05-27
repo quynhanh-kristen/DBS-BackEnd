@@ -1,19 +1,11 @@
 package com.rade.dentistbookingsystem.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -27,7 +19,8 @@ public class Service implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne()
+    @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "service_type_id", nullable = false)
     private ServiceType serviceType;
 
@@ -51,9 +44,11 @@ public class Service implements Serializable {
 
     // Discount service
     @OneToMany(mappedBy = "service")
+    @JsonIgnore
     private Set<DiscountService> discountServiceSet;
 
     // service vs feedback
     @OneToMany(mappedBy = "service")
+    @JsonIgnore
     private Set<Feedback> feedbackSet;
 }

@@ -5,29 +5,28 @@
  */
 package com.rade.dentistbookingsystem.controller;
 
-import com.rade.dentistbookingsystem.repository.BranchRepo;
-import com.rade.dentistbookingsystem.repository.ServiceTypeRepo;
+import com.rade.dentistbookingsystem.componentform.HomeComponent;
+import com.rade.dentistbookingsystem.services.BranchService;
+import com.rade.dentistbookingsystem.services.ServiceTypeSv;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Masterkien
  */
-@Controller
+@RestController
 @RequestMapping("home")
 public class HomeController {
     @Autowired
-    private ServiceTypeRepo serviceTypeRepo;
+    BranchService branchService;
     @Autowired
-    private BranchRepo branchRepo;
+    ServiceTypeSv serviceTypeSv;
     @GetMapping("")
-    public String list(Model model){
-        model.addAttribute("serviceTypeList", serviceTypeRepo.findAll());
-        model.addAttribute("branchList", branchRepo.findAll());
-        return "guest/home";
+    public HomeComponent list(Model model){
+        return new HomeComponent(serviceTypeSv.findAll(), branchService.findAll());
     }
 }

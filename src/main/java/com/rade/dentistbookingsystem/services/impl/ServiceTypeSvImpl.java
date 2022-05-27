@@ -3,11 +3,12 @@ package com.rade.dentistbookingsystem.services.impl;
 import com.rade.dentistbookingsystem.domain.ServiceType;
 import com.rade.dentistbookingsystem.repository.ServiceTypeRepo;
 import com.rade.dentistbookingsystem.services.ServiceTypeSv;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceTypeSvImpl implements ServiceTypeSv {
@@ -19,6 +20,11 @@ public class ServiceTypeSvImpl implements ServiceTypeSv {
 
     public List<ServiceType> findAll() {
         return serviceTypeRepo.findAll();
+    }
+
+    @Override
+    public ServiceType findByName(String name) {
+        return serviceTypeRepo.findByName(name);
     }
 
     public Page<ServiceType> findAll(Pageable pageable) {

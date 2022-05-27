@@ -51,15 +51,13 @@
         <tr>
             <td>Status</td>
             <td>
-<!--                || (*{status} == null)-->
                 <input type="radio" name="status" th:value="0" th:field="*{status}" th:checked="(0 == *{status})"/>Stopped working<br>
                 <input type="radio" name="status" th:value="1" th:field="*{status}" th:checked="(1 == *{status})"/>Still working<br>
             </td>
             <td th:if="${#fields.hasErrors('status')}" id="status-error" th:errors="*{status}"></td>
         </tr>
         <tr>
-            <img src="/image/branch/tai-hinh-nen-thien-nhien-dep-cho-may-tinh-5.jpg">
-            <td><img th:src="@{${'/image/branch/' + branchDTO.url}}"></td>
+            <td><img th:if="${branchDTO.url != null}" th:src="@{${'https://drive.google.com/uc?id=' + branchDTO.url}}"></td>
             <td><input type="hidden" th:field="*{url}" th:value="*{url}"></td>
             <td>Branch's image </td>
             <td>: <input type="reset" value="Reset"><input type="file" name="photo"/></td>

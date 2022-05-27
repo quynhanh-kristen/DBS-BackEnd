@@ -8,7 +8,7 @@
 <body>
     <a href="/admin/branch/add">Add a branch</a><br>
     <th:block th:each="branch : ${branchList}">
-        <img th:src="@{${'/image/branch/' + branch.url}}">
+        <img th:src="@{${'https://drive.google.com/uc?id=' + branch.url}}">
         <p th:text="${branch.name}"></p>
         <p th:text="${branch.district.name}"></p>
         <p th:text="${branch.district.province.name}"></p>

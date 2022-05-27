@@ -1,19 +1,11 @@
 package com.rade.dentistbookingsystem.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -32,7 +24,7 @@ public class ServiceType implements Serializable {
 
     @Column(name = "description", columnDefinition = "nvarchar(MAX)")
     private String description;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "serviceType", cascade = CascadeType.ALL)
     private Set<Service> serviceSet;
 }

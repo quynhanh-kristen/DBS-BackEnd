@@ -1,10 +1,11 @@
 package com.rade.dentistbookingsystem.services;
 
 import com.rade.dentistbookingsystem.domain.ServiceType;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface ServiceTypeSv {
 
@@ -13,6 +14,8 @@ public interface ServiceTypeSv {
     void deleteById(Integer id);
 
     List<ServiceType> findAll();
+
+    ServiceType findByName(String name);
 
     Page<ServiceType> findAll(Pageable pageable);
 
