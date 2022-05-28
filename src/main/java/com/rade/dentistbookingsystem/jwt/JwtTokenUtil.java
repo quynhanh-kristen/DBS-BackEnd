@@ -1,21 +1,18 @@
 package com.rade.dentistbookingsystem.jwt;
 
 
-import com.rade.dentistbookingsystem.domain.Account;
 import com.rade.dentistbookingsystem.model.AccountDetail;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 
 import java.util.Date;
 
 @Component
 public class JwtTokenUtil {
 
-    private static final long EXPIRE_DURATION = 24 * 60 * 60 * 1000; // 24 hour
+    private static final long EXPIRE_DURATION = 20 * 60 * 1000; // 20 miniute
 
 
     private String SECRET_KEY = "hihhi";

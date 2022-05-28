@@ -23,7 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
         jsr250Enabled = true,
-        prePostEnabled = false
+        prePostEnabled = true,
+        securedEnabled = true
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
@@ -63,8 +64,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/auth/login").permitAll()
-//                .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-//               .antMatchers("/user/*").hasAuthority("ROLE_USER")
+//               .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+//                .antMatchers("/user/*").hasAuthority("ROLE_USER")
                 .anyRequest().authenticated();
         http.exceptionHandling()
                 .authenticationEntryPoint(
