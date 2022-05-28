@@ -10,6 +10,7 @@ import com.rade.dentistbookingsystem.services.GoogleDriveFileService;
 import com.rade.dentistbookingsystem.services.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,7 @@ public class BranchController {
 
 
     @GetMapping("list")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Branch> list(){ return branchService.findAll(); }
 
     @GetMapping("add")
