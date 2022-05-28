@@ -18,4 +18,8 @@ public class ServiceSvImpl implements ServiceSv {
     public List<Service> findByServiceType(ServiceType serviceType) {
         return serviceRepo.findByServiceType(serviceType);
     }
+
+    public List<Service> findByServiceTypeId(int id) {
+        return serviceRepo.findByServiceTypeId(id);
+    }
 }

@@ -19,7 +19,7 @@ public interface ServiceTypeSv {
 
     Page<ServiceType> findAll(Pageable pageable);
 
-    Optional<ServiceType> findById(Integer id);
+    ServiceType findId(Integer id);
 
     ServiceType getById(Integer id);
 

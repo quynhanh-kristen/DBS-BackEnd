@@ -36,10 +36,6 @@ public class Appointment implements Serializable {
     @Column(name = "appointment_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date;
-
-    @Column(name = "appointment_time", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date time;
     
     @Column(name = "status", nullable = false)
     private int status;

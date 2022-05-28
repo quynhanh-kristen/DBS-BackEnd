@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ServiceSv {
     List<Service> findByServiceType(ServiceType serviceType);
+    List<Service> findByServiceTypeId(int id);
 }

@@ -5,7 +5,9 @@ import com.rade.dentistbookingsystem.domain.Branch;
 import com.rade.dentistbookingsystem.error.BranchError;
 import com.rade.dentistbookingsystem.model.BranchDTO;
 import com.rade.dentistbookingsystem.services.BranchService;
+import com.rade.dentistbookingsystem.services.DistrictService;
 import com.rade.dentistbookingsystem.services.GoogleDriveFileService;
+import com.rade.dentistbookingsystem.services.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,11 @@ public class BranchController {
     @Autowired
     GoogleDriveFileService googleDriveFileService;
     @Autowired
-    private BranchService branchService;
+    BranchService branchService;
+    @Autowired
+    ProvinceService provinceService;
+    @Autowired
+    DistrictService districtService;
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor((true));
@@ -40,8 +46,13 @@ public class BranchController {
     public List<Branch> list(){ return branchService.findAll(); }
 
     @GetMapping("add")
-    public BranchDTO showBranchForm(){
-        return new BranchDTO();
+    public BranchComponent showBranchForm(){
+        return new BranchComponent(
+                new BranchDTO(),
+                new BranchError(),
+                provinceService.findAll(),
+                districtService.findAll()
+        );
     }
 
     @PostMapping("add")
@@ -111,7 +122,11 @@ public class BranchController {
 
 
         if(!valid || bindingResult.hasErrors()){
-            return new BranchComponent(branchDTO, branchError);}
+            return new BranchComponent(
+                    branchDTO,
+                    branchError,
+                    provinceService.findAll(),
+                    districtService.findAll());}
         else{
             branchService.save(branchDTO);
             return null;}

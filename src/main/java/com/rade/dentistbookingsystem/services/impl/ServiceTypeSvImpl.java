@@ -39,8 +39,8 @@ public class ServiceTypeSvImpl implements ServiceTypeSv {
         return serviceTypeRepo.save(entity);
     }
 
-    public Optional<ServiceType> findById(Integer id) {
-        return serviceTypeRepo.findById(id);
+    public ServiceType findId(Integer id) {
+        return serviceTypeRepo.findId(id);
     }
 
     public long count() {
